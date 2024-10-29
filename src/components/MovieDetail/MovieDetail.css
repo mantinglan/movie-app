@@ -1,0 +1,267 @@
+.movie-detail-page {
+  padding: 20px;
+}
+
+.movie-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.movie-poster {
+  flex: 1 1 300px;
+  max-width: 300px;
+  width: 100%;
+  object-fit: contain;
+}
+
+.movie-info {
+  flex: 2 1 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 10px;
+  max-width: 600px;
+}
+
+.movie-info h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.tagline {
+  font-style: italic;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.watchlist-btn {
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.add-to-watchlist-btn {
+  background-color: #ff6b6b;
+}
+
+.add-to-watchlist-btn:hover {
+  background-color: #ff4d4d;
+}
+
+.remove-from-watchlist-btn {
+  background-color: #9d9d9d;
+}
+
+.genres {
+  margin-bottom: 20px;
+}
+
+.genre-tag {
+  display: inline-block;
+  background-color: #ffd700;
+  color: #333;
+  padding: 5px 10px;
+  border-radius: 20px;
+  margin-right: 10px;
+  margin-bottom: 2px;
+  font-size: 0.9rem;
+}
+
+.movie-meta {
+  font-size: 1rem;
+  color: #555;
+  margin-top: 10px;
+}
+
+.homepage-link {
+  display: inline-block;
+  margin-top: 10px;
+  color: #ff6b6b;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.homepage-link:hover {
+  text-decoration: underline;
+}
+
+.overview {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+}
+
+.cast-section {
+  width: 100%;
+  margin-top: 40px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.cast-list {
+  display: grid;
+  gap: 20px;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+@media (min-width: 1024px) {
+  .cast-list {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .cast-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+  .cast-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 479px) {
+  .cast-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cast-card {
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  background-color: #fff;
+}
+
+.cast-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.cast-card strong {
+  display: block;
+  margin-top: 10px;
+  font-size: 1rem;
+}
+
+.cast-list li:nth-child(n + 7) {
+  display: none;
+}
+
+.trailer-section {
+  width: 100%;
+  margin-top: 40px;
+}
+
+.trailer-section iframe {
+  width: 100%;
+  height: 450px;
+  border-radius: 10px;
+}
+
+@media (max-width: 767px) {
+  .trailer-section iframe {
+    height: 300px;
+  }
+}
+
+.reviews-section {
+  width: 100%;
+  margin-top: 40px;
+}
+
+.reviews-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.reviews-list {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.review-item {
+  flex: 1 1 345px;
+  background-color: #f1f1f1;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  height: 200px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.review-item strong {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.review-item p {
+  font-size: 1rem;
+  line-height: 1.4;
+  overflow: auto;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  max-height: 120px;
+}
+
+@media (max-width: 768px) {
+  .review-item {
+    max-width: 100%;
+  }
+}
+
+.section-spacing {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+}
+
+.button {
+  background-color: #28a745;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-align: center;
+  display: inline-block;
+  text-decoration: none;
+  font-size: 1rem;
+  margin-top: 20px;
+}
+
+.button:hover {
+  background-color: #218838;
+}
+
+@media (max-width: 767px) {
+  .movie-detail h1 {
+    font-size: 2rem;
+  }
+
+  .movie-detail p {
+    font-size: 1rem;
+  }
+  .reviews-list {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
