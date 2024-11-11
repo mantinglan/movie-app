@@ -1,9 +1,18 @@
 /* eslint-disable react/prop-types */
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { searchMovies } from "../function/Movie";
 import sortOptions from "../constants/optionConst.js";
 import MovieCard from "../components/Movie/MovieCard";
+import debounce from "lodash.debounce";
+
+const LoadingSpinner = () => (
+  <div className="d-flex justify-content-center mt-4">
+    <div className="spinner-border text-danger" role="status">
+      <span className="sr-only">Loading...</span>
+    </div>
+  </div>
+);
 
 const SearchResult = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -16,24 +25,31 @@ const SearchResult = () => {
   const [sortOption, setSortOption] = useState("release_date");
 
   useEffect(() => {
-    if (searchValue) {
-      setIsLoading(true);
-      searchMovies(searchValue, page)
-        .then((res) => {
-          if (page === 1) {
-            setMovies(res.data.results);
-          } else {
-            setMovies((prevMovies) => [...prevMovies, ...res.data.results]);
-          }
-          setHasMore(page < res.data.total_pages);
-        })
-        .catch((err) => console.log(err, "err"))
-        .finally(() => setIsLoading(false));
-    }
+    const fetchMovies = async () => {
+      if (!searchValue) return;
+
+      try {
+        setIsLoading(true);
+        const res = await searchMovies(searchValue, page);
+
+        setMovies((prevMovies) =>
+          page === 1 ? res.data.results : [...prevMovies, ...res.data.results]
+        );
+
+        setHasMore(page < res.data.total_pages);
+      } catch (err) {
+        console.error("搜尋電影時發生錯誤:", err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchMovies();
   }, [searchValue, page]);
 
   const handleSearch = (e) => {
     e.preventDefault();
+    if (!tempSearchValue.trim()) return;
     setPage(1);
     setSearchValue(tempSearchValue);
   };
@@ -43,34 +59,40 @@ const SearchResult = () => {
   };
 
   const handleScroll = () => {
-    if (
-      window.innerHeight + document.documentElement.scrollTop >=
-        document.documentElement.offsetHeight - 500 &&
-      !isLoading &&
-      hasMore
-    ) {
-      setPage((prevPage) => prevPage + 1);
+    const scrollPosition =
+      window.innerHeight + document.documentElement.scrollTop;
+    const threshold = document.documentElement.offsetHeight - 500;
+
+    if (scrollPosition >= threshold && !isLoading && hasMore) {
+      setPage((prev) => prev + 1);
     }
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const debouncedScroll = debounce(handleScroll, 200);
+    window.addEventListener("scroll", debouncedScroll);
+
+    return () => {
+      window.removeEventListener("scroll", debouncedScroll);
+    };
   }, [isLoading, hasMore]);
 
   const handleSortChange = (e) => {
     setSortOption(e.target.value);
   };
 
-  const sortedMovies = movies.sort((a, b) => {
-    const sortKey = sortOptions.find(
-      (option) => option.value === sortOption
-    )?.key;
-    if (sortKey === "release_date") {
-      return new Date(b.release_date) - new Date(a.release_date);
-    }
-    return b[sortKey] - a[sortKey];
-  });
+  const sortedMovies = useMemo(() => {
+    return [...movies].sort((a, b) => {
+      const sortKey = sortOptions.find(
+        (option) => option.value === sortOption
+      )?.key;
+
+      if (sortKey === "release_date") {
+        return new Date(b.release_date) - new Date(a.release_date);
+      }
+      return b[sortKey] - a[sortKey];
+    });
+  }, [movies, sortOption]);
 
   return (
     <div className="movie-list">
@@ -98,13 +120,7 @@ const SearchResult = () => {
           ))}
         </select>
       </div>
-      {isLoading && page === 1 && (
-        <div className="d-flex justify-content-center mt-4">
-          <div className="spinner-border text-danger" role="status">
-            <span className="sr-only">Loading...</span>
-          </div>
-        </div>
-      )}
+      {isLoading && page === 1 && <LoadingSpinner />}
 
       {sortedMovies?.length === 0 && !isLoading && (
         <h3 className="text-center mt-4">No results found</h3>
@@ -117,13 +133,7 @@ const SearchResult = () => {
           ))}
       </div>
 
-      {isLoading && page > 1 && (
-        <div className="d-flex justify-content-center mt-4">
-          <div className="spinner-border text-danger" role="status">
-            <span className="sr-only">Loading...</span>
-          </div>
-        </div>
-      )}
+      {isLoading && page > 1 && <LoadingSpinner />}
     </div>
   );
 };
