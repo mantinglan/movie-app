@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 function MovieReviews({ reviews }) {
   return (
-    <div className="reviews-section">
+    <div className="reviews-section section-title">
       <h2>Reviews</h2>
       {reviews.length > 0 ? (
         <ul className="reviews-list">

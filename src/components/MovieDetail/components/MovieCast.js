@@ -3,7 +3,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 
 function MovieCast({ cast }) {
   return (
-    <div className="cast-section">
+    <div className="cast-section section-title">
       <h2>Cast</h2>
       <div className="cast-list">
         {cast.map((actor) => (

@@ -105,6 +105,11 @@
   padding: 20px;
   border-radius: 10px;
 }
+.section-title h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
 
 .cast-list {
   display: grid;
@@ -178,16 +183,36 @@
     height: 300px;
   }
 }
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 寬高比 */
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+}
 
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .video-container {
+    padding-bottom: 75%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .video-container {
+    padding-bottom: 85%;
+  }
+}
 .reviews-section {
   width: 100%;
   margin-top: 40px;
-}
-
-.reviews-section h2 {
-  font-size: 1.8rem;
-  margin-bottom: 20px;
-  text-align: center;
 }
 
 .reviews-list {

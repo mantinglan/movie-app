@@ -6,20 +6,43 @@ import WatchList from "../../src/Pages/WatchList/WatchList";
 import MovieDetail from "../../src/components/MovieDetail/MovieDetail";
 import Protected from "../../src/Routes/Protected";
 
+export const ROUTES = {
+  HOME: "/",
+  SEARCH: "/search",
+  MOVIE_DETAIL: "/movie/:movie_id",
+  WATCHLIST: "/watchlist"
+};
+
+const routeConfig = [
+  {
+    path: ROUTES.HOME,
+    element: <MovieList />
+  },
+  {
+    path: ROUTES.SEARCH,
+    element: <SearchResult />
+  },
+  {
+    path: ROUTES.MOVIE_DETAIL,
+    element: <MovieDetail />
+  },
+  {
+    path: ROUTES.WATCHLIST,
+    element: <Protected><WatchList /></Protected>,
+    protected: true
+  }
+];
+
 export default function AppRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<MovieList />} />
-      <Route path="/search" element={<SearchResult />} />
-      <Route path="/movie/:movie_id" element={<MovieDetail />} />
-      <Route
-        path="/watchlist"
-        element={
-          <Protected>
-            <WatchList />
-          </Protected>
-        }
-      />
+      {routeConfig.map((route) => (
+        <Route
+          key={route.path}
+          path={route.path}
+          element={route.element}
+        />
+      ))}
     </Routes>
   );
 }

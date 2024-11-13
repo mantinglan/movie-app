@@ -75,7 +75,7 @@ const SearchResult = () => {
     return () => {
       window.removeEventListener("scroll", debouncedScroll);
     };
-  }, [isLoading, hasMore]);
+  }, [isLoading, hasMore, handleScroll]);
 
   const handleSortChange = (e) => {
     setSortOption(e.target.value);
