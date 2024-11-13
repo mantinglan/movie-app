@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/movie-app/static/css/main.1acb9943.css",
-    "main.js": "/movie-app/static/js/main.cacaaba8.js",
+    "main.css": "/movie-app/static/css/main.875766fc.css",
+    "main.js": "/movie-app/static/js/main.cbeca4ce.js",
     "static/js/453.0b30a3d5.chunk.js": "/movie-app/static/js/453.0b30a3d5.chunk.js",
     "static/media/bootstrap-icons.woff?": "/movie-app/static/media/bootstrap-icons.39795c0b4513de014cf8.woff",
     "static/media/bootstrap-icons.woff2?": "/movie-app/static/media/bootstrap-icons.b7bcc075b395c14ce8c2.woff2",
     "index.html": "/movie-app/index.html",
-    "main.1acb9943.css.map": "/movie-app/static/css/main.1acb9943.css.map",
-    "main.cacaaba8.js.map": "/movie-app/static/js/main.cacaaba8.js.map",
+    "main.875766fc.css.map": "/movie-app/static/css/main.875766fc.css.map",
+    "main.cbeca4ce.js.map": "/movie-app/static/js/main.cbeca4ce.js.map",
     "453.0b30a3d5.chunk.js.map": "/movie-app/static/js/453.0b30a3d5.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1acb9943.css",
-    "static/js/main.cacaaba8.js"
+    "static/css/main.875766fc.css",
+    "static/js/main.cbeca4ce.js"
   ]
 }
