@@ -31,12 +31,11 @@ const SearchResult = () => {
       try {
         setIsLoading(true);
         const res = await searchMovies(searchValue, page);
-
         setMovies((prevMovies) =>
-          page === 1 ? res.data.results : [...prevMovies, ...res.data.results]
+          page === 1 ? res.results : [...prevMovies, ...res.results]
         );
 
-        setHasMore(page < res.data.total_pages);
+        setHasMore(page < res.total_pages);
       } catch (err) {
         console.error("搜尋電影時發生錯誤:", err);
       } finally {

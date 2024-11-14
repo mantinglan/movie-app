@@ -21,10 +21,10 @@ const MovieList = () => {
     setIsLoading(true);
     getSortedgMovies(activePage, sortBy)
       .then((response) => {
-        if (response.data.results) {
-          setMovies(response.data.results);
-          setActivePage(response.data.page);
-          setTotalPages(response.data.total_pages);
+        if (response.results) {
+          setMovies(response.results);
+          setActivePage(response.page);
+          setTotalPages(response.total_pages);
           console.log("inin", response);
         }
       })

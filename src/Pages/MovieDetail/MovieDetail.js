@@ -26,10 +26,11 @@ const MovieDetail = () => {
   useEffect(() => {
     getMovieById(movie_id, `${AR.CREDITS},${AR.REVIEWS},${AR.VIDEOS}`).then(
       (movieResponse) => {
-        setMovie(movieResponse.data);
-        setCast(movieResponse.data.credits.cast.slice(0, 6));
-        setReviews(movieResponse.data.reviews.results); // 設置評論
-        const trailers = movieResponse.data.videos.results.filter(
+        console.log("movieResponse", movieResponse);
+        setMovie(movieResponse);
+        setCast(movieResponse.credits.cast.slice(0, 6));
+        setReviews(movieResponse.reviews.results); // 設置評論
+        const trailers = movieResponse.videos.results.filter(
           (video) => video.type === "Trailer"
         );
         if (trailers.length > 0) {
