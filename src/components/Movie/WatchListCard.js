@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useNavigate } from "react-router-dom";
 import { useFirestore } from "../../firebase/FirebaseStore";
-import { useAuth } from "../../context/useAuth";
+import { useAuth } from "../../context/authProvider";
 import { Tooltip, OverlayTrigger } from "react-bootstrap";
 
 const WatchListCard = ({ movie, setWatchlist }) => {

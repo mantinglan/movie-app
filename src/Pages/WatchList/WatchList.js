@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useFirestore } from "../../firebase/FirebaseStore.js";
-import { useAuth } from "../../context/useAuth.js";
+import { useAuth } from "../../context/authProvider.js";
 import WatchLottery from "../../components/WatchLottery/WatchLottery.js";
 import sortOptions from "../../constants/optionConst.js";
 import WatchListCard from "../../components/Movie/WatchListCard.js";

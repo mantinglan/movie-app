@@ -4,7 +4,7 @@ import { getMovieById } from "../../function/Movie";
 import { APPEND_TO_RESPONSE as AR } from "../../constants/Urls";
 import "./MovieDetail.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
-import { useAuth } from "../../context/useAuth";
+import { useAuth } from "../../context/authProvider";
 import { useAlert } from "../../context/alertProvider";
 import { useFirestore } from "../../firebase/FirebaseStore";
 import MovieHeader from "../../components/MovieDetail/MovieHeader";
@@ -60,6 +60,7 @@ const MovieDetail = () => {
   }, [movie_id, user, checkIfInWatchlist]);
 
   const handleAddtoWatchList = async () => {
+    console.log("in handleAddtoWatchList");
     if (!user) {
       showAlert({
         message: "Login to add to watchlist",
