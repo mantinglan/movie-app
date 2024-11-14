@@ -4,7 +4,7 @@ import "./MovieCard.css";
 const MovieCard = ({ movie, clickFun }) => {
   return (
     <div
-      className="image-container d-flex justify-content-start"
+      className="movie-card image-container d-flex justify-content-start"
       onClick={() => clickFun(movie.id)}
     >
       {movie.poster_path ? (
@@ -15,7 +15,7 @@ const MovieCard = ({ movie, clickFun }) => {
       ) : (
         <div className="no-poster">No Image Available</div>
       )}
-      <div className="overlay d-flex align-items-center ">
+      <div className="movie-card overlay d-flex align-items-center ">
         <span>{movie.title}</span>
       </div>
     </div>

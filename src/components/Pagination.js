@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 function PaginationComponent({ activePage, totalPages, setActivePage }) {
   return (
-    <div className="d-flex align-items-center gap-2 my-4">
+    <div className="pagination d-flex align-items-center gap-2 my-4">
       <div className="d-flex gap-2" style={{ maxWidth: "250px" }}>
         <button
           className="btn btn-primary mr-2"
