@@ -3,45 +3,45 @@ import { Routes, Route } from "react-router-dom";
 import MovieList from "../../src/Pages/MovieList";
 import SearchResult from "../../src/Pages/SearchResult";
 import WatchList from "../../src/Pages/WatchList/WatchList";
-import MovieDetail from "../../src/components/MovieDetail/MovieDetail";
+import MovieDetail from "../../src/Pages/MovieDetail/MovieDetail";
 import Protected from "../../src/Routes/Protected";
 
 export const ROUTES = {
   HOME: "/",
   SEARCH: "/search",
   MOVIE_DETAIL: "/movie/:movie_id",
-  WATCHLIST: "/watchlist"
+  WATCHLIST: "/watchlist",
 };
 
 const routeConfig = [
   {
     path: ROUTES.HOME,
-    element: <MovieList />
+    element: <MovieList />,
   },
   {
     path: ROUTES.SEARCH,
-    element: <SearchResult />
+    element: <SearchResult />,
   },
   {
     path: ROUTES.MOVIE_DETAIL,
-    element: <MovieDetail />
+    element: <MovieDetail />,
   },
   {
     path: ROUTES.WATCHLIST,
-    element: <Protected><WatchList /></Protected>,
-    protected: true
-  }
+    element: (
+      <Protected>
+        <WatchList />
+      </Protected>
+    ),
+    protected: true,
+  },
 ];
 
 export default function AppRoutes() {
   return (
     <Routes>
       {routeConfig.map((route) => (
-        <Route
-          key={route.path}
-          path={route.path}
-          element={route.element}
-        />
+        <Route key={route.path} path={route.path} element={route.element} />
       ))}
     </Routes>
   );

@@ -7,10 +7,10 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 import { useAuth } from "../../context/useAuth";
 import { useAlert } from "../../context/alertProvider";
 import { useFirestore } from "../../firebase/FirebaseStore";
-import MovieHeader from "./components/MovieHeader";
-import MovieTrailer from "./components/MovieTrailer";
-import MovieCast from "./components/MovieCast";
-import MovieReviews from "./components/MovieReviews";
+import MovieHeader from "../../components/MovieDetail/MovieHeader";
+import MovieTrailer from "../../components/MovieDetail/MovieTrailer";
+import MovieCast from "../../components/MovieDetail/MovieCast";
+import MovieReviews from "../../components/MovieDetail/MovieReviews";
 const MovieDetail = () => {
   const { movie_id } = useParams();
   const [movie, setMovie] = useState(null);

@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import WatchlistButton from "./WatchlistButton";
-import { TMDB_IMAGE_BASE_URL } from "../../../constants/Urls";
+import { TMDB_IMAGE_BASE_URL } from "../../constants/Urls";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 function MovieHeader({
   movie,
